@@ -27,7 +27,7 @@ Ele permite que usuários se cadastrem, façam login, visualizem seus dados e ve
 * Login e cadastro usando **Firebase Firestore**
 * Validação de e-mail e senha diretamente no banco
 * Mensagens de erro amigáveis  
-🔗 **[Ir para Login/Register](#-loginregister---tela-de-autenticação-e-cadastro)**
+🔗 **[Ir para Login/Register](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/LoginRegister.kt)**
 
 ---
 
@@ -36,7 +36,7 @@ Ele permite que usuários se cadastrem, façam login, visualizem seus dados e ve
 * Campos: Nome, Sobrenome, E-mail, Senha e Telefone
 * Dados salvos no **Firestore**
 * Consulta e listagem completa dos registros salvos  
-🔗 **[Ir para Tela Home/Listagem](#-home---boas-vindas-e-listagem-de-usuários)**
+🔗 **[Ir para Tela Home/Listagem](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/Home.kt)**
 
 ---
 
@@ -78,7 +78,7 @@ startDestination = "login"
 - Ao logar, vai para: `home/{userName}`
 - Ao cadastrar, volta para login  
 
-🔗 **[Ver código completo da MainActivity](#mainactivity---controle-de-navegação)**
+🔗 **[Ver código completo da MainActivity](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/MainActivity.kt)**
 Controla qual tela será exibida:
 
 ---
@@ -91,7 +91,7 @@ Controla qual tela será exibida:
 - Mostra erro se usuário não existe
 - Ícone para mostrar/esconder senha 🔒👁️  
 
-<img src="https://github.com/user-attachments/assets/a1ac7234-53bd-4f51-a69b-78c1c4ad5060" alt="icon" width="16" height="16" style="vertical-align:middle; margin-right:6px;" /> **[Ver função LoginScreen()](#loginscreen)**
+<img src="https://github.com/user-attachments/assets/a1ac7234-53bd-4f51-a69b-78c1c4ad5060" alt="icon" width="16" height="16" style="vertical-align:middle; margin-right:6px;" /> **[Ver função LoginScreen()](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/LoginRegister.kt)**
 
 #### ✍️ Cadastro
 
@@ -99,7 +99,7 @@ Controla qual tela será exibida:
 - Salva os dados no Firebase (coleção `"banco"`)
 - Interface amigável e responsiva  
 
-🔗 **[Ver função RegisterScreen()](#registerscreen)**
+🔗 **[Ver função RegisterScreen()](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/LoginRegister.kt)**
 
 ---
 
@@ -116,7 +116,7 @@ Controla qual tela será exibida:
 - Campos exibidos: nome, sobrenome, email, senha, telefone
 - Navegação via barra inferior com ícones personalizados  
 
-🔗 **[Ver função HomeScreen()](#homescreen)**
+🔗 **[Ver função HomeScreen()](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/Home.kt)**
 
 ---
 
