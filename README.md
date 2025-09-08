@@ -91,7 +91,7 @@ Controla qual tela será exibida:
 - Mostra erro se usuário não existe
 - Ícone para mostrar/esconder senha 🔒👁️  
 
-<img src="https://github.com/user-attachments/assets/a1ac7234-53bd-4f51-a69b-78c1c4ad5060" alt="icon" width="16" height="16" style="vertical-align:middle; margin-right:6px;" /> **[Ver função LoginScreen()](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/LoginRegister.kt)**
+🔗 **[Ver função LoginScreen()](https://github.com/J0vana23/APP_FIREBASE_CRUD/blob/main/app/src/main/java/com/example/app_firebase_crud/pages/LoginRegister.kt)**
 
 #### ✍️ Cadastro
 
