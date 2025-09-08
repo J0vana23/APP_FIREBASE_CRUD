@@ -131,12 +131,21 @@ Controla qual tela será exibida:
 ---
 
 ### 📸 Imagens do App
+<table align="center">
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/5c1cd92b-fba2-42d9-ba90-323ec806da7d" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/d0379f09-1fd9-4681-9338-594524dee8b0" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/ab67eeac-4b39-42e4-ba33-6a189fe4574a" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/8a37dcdc-d408-4cda-bb56-0d8fa51c8800" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/10e4b761-3e12-417d-8def-9591840f1523" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/f99b79b7-fbe7-4d19-b130-ad8f34ebc274" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/ecca571c-b2e1-45f0-98fd-1882d351baa0" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+    <td><img src="https://github.com/user-attachments/assets/f4c79b46-fa3c-4dab-80c9-3c0729b556b6" width="180" style="background:white; padding:4px; border-radius:10px;"></td>
+  </tr>
+</table>
 
-<p align="center">
-  <img width="250" src="https://github.com/user-attachments/assets/6fd640ff-1a66-4702-a459-92b9ac7008dc" />
-  <img width="250" src="https://github.com/user-attachments/assets/6bebcdfa-5c77-4c17-8e5c-f8602354d9db" />
-  <img width="250" src="https://github.com/user-attachments/assets/e74e4f57-01dd-4ca2-8141-327c9142ef1e" />
-</p>
 
 ---
 
