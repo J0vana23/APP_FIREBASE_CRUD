@@ -6,15 +6,15 @@
   <img width="250" height="250" alt="image3" src="https://github.com/user-attachments/assets/e74e4f57-01dd-4ca2-8141-327c9142ef1e" />
 </p>
 
-# 📱 App Firebase CRUD - Kotlin + Jetpack Compose
+# ☁️ App Firebase CRUD - Kotlin + Jetpack Compose
 
+Este é um **aplicativo Android com CRUD completo utilizando o Firebase como backend**, feito com **Kotlin** e **Jetpack Compose**.
 
----
+Ele integra os seguintes serviços do Firebase:
 
-## 🚀 Sobre o Projeto
+- 🔐 **Firebase Authentication** (simulado via Firestore)
+- ☁️ **Cloud Firestore** para armazenamento de dados
 
-Este é um **aplicativo Android com CRUD completo usando Firebase**, feito com **Kotlin** e **Jetpack Compose**.  
-Ele permite que usuários se cadastrem, façam login, visualizem seus dados e vejam a lista completa de registros salvos no Firestore.
 
 > 🎯 Projeto desenvolvido na disciplina **PAM II** como parte do 3º bimestre.
 
