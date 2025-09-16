@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.*
 import com.example.app_firebase_crud.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.firebase.auth.auth
+
+
 
 // TELA DE LOGIN
 @Composable
@@ -29,7 +32,6 @@ fun LoginScreen(
     var senha by remember { mutableStateOf("") }
     var mostrarSenha by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
-    val db = Firebase.firestore
 
     val backgroundColor = Color(0xFF121212)
     val primaryColor = Color(0xFF0351C9)
@@ -51,7 +53,7 @@ fun LoginScreen(
         )
 
         Text("Login",
-            fontFamily = FontFamily.SansSerif, // já vem embutida
+            fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
             fontSize = 36.sp, color = primaryColor,
             modifier = Modifier.padding(vertical = 24.dp))
@@ -116,22 +118,19 @@ fun LoginScreen(
                     return@Button
                 }
 
-                db.collection("banco")
-                    .whereEqualTo("email", email)
-                    .whereEqualTo("senha", senha)
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        if (documents.isEmpty) {
-                            errorMessage = "Credenciais inválidas"
-                        } else {
-                            val nomeUsuario = documents.documents[0].getString("nome") ?: email
-                            onLogin(nomeUsuario)
-                        }
+                val auth = Firebase.auth
+
+                auth.signInWithEmailAndPassword(email, senha)
+                    .addOnSuccessListener {
+                        val user = it.user
+                        val nomeUsuario = user?.email ?: "Usuário"
+                        onLogin(nomeUsuario)
                     }
                     .addOnFailureListener { e ->
-                        errorMessage = "Erro: ${e.message}"
-                        Log.w("Login", "Erro", e)
+                        errorMessage = "Erro de login: ${e.message}"
+                        Log.e("LoginScreen", "Login failed", e)
                     }
+
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = primaryColor),
@@ -155,6 +154,7 @@ fun LoginScreen(
 }
 
 
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -170,12 +170,13 @@ fun RegisterScreen(
     var senha by remember { mutableStateOf("") }
     var telefone by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
+
     val db = Firebase.firestore
+    val auth = Firebase.auth
 
     val backgroundColor = Color(0xFF121212)
     val primaryColor = Color(0xFF0351C9)
     val White = Color.White
-
 
     Box(
         modifier = Modifier
@@ -192,25 +193,20 @@ fun RegisterScreen(
             colors = CardDefaults.cardColors(containerColor = backgroundColor)
         ) {
             Column(
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp), // menos padding interno
-
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-
                 Text("facebook",
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Bold,
                     fontSize = 46.sp, color = White,
                     modifier = Modifier.padding(vertical = 5.dp))
 
-
                 Image(
                     painter = painterResource(id = R.drawable.pessoa_cadastro),
                     contentDescription = "Logo",
                     modifier = Modifier.size(150.dp)
                 )
-
 
                 Text("Cadastro",
                     fontFamily = FontFamily.SansSerif,
@@ -236,8 +232,8 @@ fun RegisterScreen(
                         isPassword = label == "Senha"
                     )
                 }
-                Spacer(modifier = Modifier.height(24.dp))
 
+                Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
                     onClick = {
@@ -246,22 +242,32 @@ fun RegisterScreen(
                             return@Button
                         }
 
-                        val usuario = hashMapOf(
-                            "nome" to nome,
-                            "sobrenome" to sobrenome,
-                            "email" to email,
-                            "senha" to senha,
-                            "telefone" to telefone
-                        )
+                        auth.createUserWithEmailAndPassword(email, senha)
+                            .addOnSuccessListener { authResult ->
+                                val uid = authResult.user?.uid
 
-                        db.collection("banco")
-                            .add(usuario)
-                            .addOnSuccessListener {
-                                onRegisterComplete()
+                                val usuario = hashMapOf(
+                                    "nome" to nome,
+                                    "sobrenome" to sobrenome,
+                                    "email" to email,
+                                    "telefone" to telefone
+                                )
+
+                                if (uid != null) {
+                                    db.collection("usuarios").document(uid)
+                                        .set(usuario)
+                                        .addOnSuccessListener {
+                                            onRegisterComplete()
+                                        }
+                                        .addOnFailureListener { e ->
+                                            errorMessage = "Erro ao salvar dados: ${e.message}"
+                                            Log.e("Register", "Erro Firestore", e)
+                                        }
+                                }
                             }
                             .addOnFailureListener { e ->
-                                errorMessage = "Erro: ${e.message}"
-                                Log.e("Register", "Erro ao registrar", e)
+                                errorMessage = "Erro no cadastro: ${e.message}"
+                                Log.e("Register", "Erro FirebaseAuth", e)
                             }
                     },
                     modifier = Modifier
@@ -286,12 +292,13 @@ fun RegisterScreen(
                 ) {
                     Text("Já tem uma conta? Faça login", fontSize = 16.sp, color = primaryColor)
                 }
-                Spacer(modifier = Modifier.height(80.dp)) // <-- Adiciona espaço no final do scroll
 
+                Spacer(modifier = Modifier.height(80.dp))
             }
         }
     }
 }
+
 
 @Composable
 fun StyledOutlinedTextField(
